@@ -1,0 +1,34 @@
+body {
+  font-family: 'Slabo 27px', serif;
+  font-size: 20px;
+}
+
+.row .log{
+  margin-top: 250px;
+  background-color: rgb(8, 6, 17);
+  border: 2px solid rgb(12, 223, 46);
+  min-width: 20px ;
+
+}
+
+.row .log .navbar-form a{
+  text-decoration: none;
+  color: white;
+}
+
+.row .log .navbar-form .wide{
+  overflow: hidden;
+}
+
+.row .log .navbar-form a:hover{
+  color: rgb(52, 47, 55);
+}
+.row .log .navbar-form .but{
+  background: none;
+  border: none;
+  color: white;
+}
+
+.row .log .navbar-form .but:hover{
+  color: rgb(52, 47, 55);
+}
