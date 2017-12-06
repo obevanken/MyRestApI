@@ -29,6 +29,13 @@
     <%=doc.comments[i].username%>:
     <br>
     <%=doc.comments[i].textCommen%>
+    <%if(doc.comments[i].username == user){%>
+    <form action="/del/<%=id%>" method="post">
+      <input type="hidden" name = "_method" value="PUT">
+        <input type="hidden" name="id" value="<%=doc.comments[i].id%>">
+      <input type="submit" value = "Удалить коммент">
+    </form>
+    <%}%>
   </div>
   <%}%>
 

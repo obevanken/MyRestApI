@@ -13,12 +13,6 @@ exports.create = function(user, cb){
   })
 }
 
-exports.delete = function (id, cb){
-  db.get().collection('user').deleteOne( {_id: ObjectID(id) } , function(err, result){
-      cb(err, result);
-    })
- }
-
  exports.findByID = function (id, cb){
    db.get().collection('user').findOne({ _id: ObjectID(id)} , function(err, result){
      cb(err, result);

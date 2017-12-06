@@ -41,6 +41,7 @@ module.exports = function(passport){
   router.get('/articles',isAuthenticated, articlesController.all);
   router.put('/articles/:id',isAuthenticated,articlesController.updateCom );
   router.delete('/articles/:id', articlesController.delete);
-
+  router.put('/del/:id', isAuthenticated, articlesController.deleteCom);
+  
   return router;
 }

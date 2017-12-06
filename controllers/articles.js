@@ -20,6 +20,30 @@ exports.create = function(req, res){
  })
 }
 
+exports.deleteCom = function(req, res, done){
+  Articles.findByID(req.params.id, function(err, doc) {
+      if (err) {
+        console.log(err);
+        return res.sendStatus(500);
+      }
+      console.log(req.body.id);
+      for (var i = 0; i < doc.comments.length; i++) {
+        if(doc.comments[i].id == req.body.id ){
+          console.log(doc.comments[i]);
+          doc.comments.splice(i, 1);
+        }
+      }
+      Articles.update(req.params.id,  doc  , function(err, result){
+        if (err) {
+          console.log(err);
+          return res.sendStatus(500);
+        }
+        console.log(doc);
+          done();
+            res.redirect('../articles/' + req.params.id);
+      })
+})
+}
 
 exports.all = function(req, res) {
   Articles.all(function(err, docs) {
@@ -66,13 +90,16 @@ exports.findByID = function(req, res) {
           username: doc.username,
           head: doc.head,
           text: doc.text,
+          user: req.user.username
         })
       } else {
         res.render('article', {
           doc:doc,
           head: doc.head,
+          id: doc._id,
           text: doc.text,
-          username: doc.username
+          username: doc.username,
+          user: req.user.username
         })
       }
   })
@@ -105,7 +132,9 @@ exports.update = function(req, res){
 }
 
 exports.updateCom = function(req,res){
+
   comment = {
+    id: ObjectID(),
     articleID: req.params.id,
     textCommen: req.body.comm,
     username: req.user.username
@@ -124,21 +153,8 @@ exports.updateCom = function(req,res){
   } )
 }
 
-exports.deleteCom = function(req, res){
-  Articles.findByID(req.params.id, function(err, doc) {
-      if (err) {
-        console.log(err);
-        return res.sendStatus(500);
-      }
-  Articles.deleteCom(doc.comments.username, doc.comments.textCommen, function(err, result){
-    if(err){
-      console.log(err);
-      res.sendStatus(500);
-    }
-    res.redirect('/articles');
-  })
-})
-}
+
+
 
 exports.delete = function (req, res){
   Articles.delete( req.params.id , function(err, result){

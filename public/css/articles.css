@@ -4,6 +4,20 @@ body{
   padding: 0px;
   margin: 0px;
 }
+
+a{
+  text-decoration: none;
+  color:white;
+  padding-left: 5px;
+}
+
+
+input{
+  background: none;
+  border: none ;
+  color:white;
+}
+
  .navbar-inverse .user .but{
    background: none;
    border: none;
@@ -21,21 +35,17 @@ body{
    color:white;
    padding-left: 5px;
  }
-.navbar-inverse .user .collapse .del{
-  background: none;
-  border: none;
-  color:white;
-}
+
 
 .navbar-inverse .user .collapse .del:hover{
   background: none;
   border: none;
-  color:rgb(52, 47, 55);
+  color:rgb(161, 163, 30);
 }
 
 .navbar-inverse .user .collapse a:hover{
   text-decoration: none;
-  color:rgb(52, 47, 55);
+  color:rgb(161, 163, 30);
   padding-left: 5px;
 }
 
